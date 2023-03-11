@@ -2,6 +2,8 @@ namespace BitsOrch.Infrastructure.Entities;
 
 public class FieldEntity
 {
+    public string Id { get; set; }
+    
     public string Name { get; set; }
 
     public DateTime BirthDate { get; set; }
