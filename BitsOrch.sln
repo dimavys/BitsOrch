@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitsOrch.Infrastructure", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitsOrch.MVC", "src\BitsOrch.MVC\BitsOrch.MVC.csproj", "{5B1F6258-72EF-4C73-8D9A-F0252A7691FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitsOrch.ApplicationCore", "src\BitsOrch.ApplicationCore\BitsOrch.ApplicationCore.csproj", "{C1045959-02AA-428C-8EE1-0988ED48902F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,6 +16,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{22AA0EFE-7431-456A-846B-C841EC32F4D7} = {3BFE6A05-3A57-443D-9B23-B660DF3960ED}
 		{5B1F6258-72EF-4C73-8D9A-F0252A7691FB} = {3BFE6A05-3A57-443D-9B23-B660DF3960ED}
+		{C1045959-02AA-428C-8EE1-0988ED48902F} = {3BFE6A05-3A57-443D-9B23-B660DF3960ED}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{22AA0EFE-7431-456A-846B-C841EC32F4D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -24,5 +27,9 @@ Global
 		{5B1F6258-72EF-4C73-8D9A-F0252A7691FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B1F6258-72EF-4C73-8D9A-F0252A7691FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B1F6258-72EF-4C73-8D9A-F0252A7691FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1045959-02AA-428C-8EE1-0988ED48902F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1045959-02AA-428C-8EE1-0988ED48902F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1045959-02AA-428C-8EE1-0988ED48902F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1045959-02AA-428C-8EE1-0988ED48902F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
