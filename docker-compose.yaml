@@ -1,17 +1,18 @@
-#docker-compose up -d
 version: '3.8'
+
 services:
   db:
-      image: mcr.microsoft.com/mssql/server:2019-latest
-      container_name: bits-orch
-      user: root
-      environment:
-          SA_PASSWORD: Qwerty123$$%
-          ACCEPT_EULA: Y
-          MSSQL_DB: BitsOrch
-      ports:
-          - "1433:1433"
-      volumes:
-          - dbdata:/var/opt/mssql/data
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    user: root
+    ports:
+      - "1433:1433"
+    volumes:
+      - dbdata:/var/opt/mssql/data
+    environment:
+      SA_PASSWORD: "Qwerty123$$%"
+      ACCEPT_EULA: "Y"
+      MSSQL_DB: "BitsOrch"
+      
 volumes:
   dbdata:
+    driver: local
