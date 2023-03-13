@@ -1,8 +1,5 @@
 ﻿using BitsOrch.ApplicationCore.Interfaces;
-using BitsOrch.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
-using BitsOrch.MVC.Models;
-using CsvHelper;
 
 namespace BitsOrch.MVC.Controllers;
 
@@ -10,50 +7,34 @@ public class HomeController : Controller
 {
     private readonly IFileService _fileService;
     
-    private List<FieldDTO> _list = new();
-
     public HomeController(IFileService fileService) => _fileService = fileService;
-    
-    public IActionResult Index(List<FieldDTO> list)
-    {
-        foreach (var r in list)
-        {
-            _list.Add(r);
-        }
-        return View(_list);
-    }
 
-    [HttpPost]
-    public IActionResult Index(IFormFile postedFile, [FromServices] IHostEnvironment hostEnvironment)
+    [HttpGet]
+    public async Task<IActionResult> Index(CancellationToken token)
     {
-        string fileName = $"{hostEnvironment.ContentRootPath}\\files\\{postedFile.FileName}";
-
-        return Index(CreateList(fileName));
-    }
-
-    [HttpPost]
-    public IActionResult DeleteRow(string id)
-    {
-        throw new NotImplementedException();
-    }
-
-    private List<FieldDTO> CreateList(string fileName)
-    {
-        var list = new List<FieldDTO>();
-        using (var streamReader = new StreamReader(fileName))
-        {
-            using (var csvReader = new CsvReader(streamReader, System.Globalization.CultureInfo.InvariantCulture))
-            {
-                csvReader.Read();
-                csvReader.ReadHeader();
-                while (csvReader.Read())
-                {
-                    list.Add(csvReader.GetRecord<FieldDTO>());
-                }
-            }
-            
-        }
-        return list;
+        var rows = await _fileService.GetRowsAsync(token);
+        return View(rows);
     }
     
+    [HttpPost]
+    public async Task<IActionResult> DeleteRow(string id, CancellationToken token)
+    {
+        var result = await _fileService.DeleteRowAsync(id, token);
+        if (result != null)
+            return RedirectToAction("Index");
+        throw new FileNotFoundException();
+    }
+
+
+    [HttpPost]
+    public async Task<IActionResult> PostFile(IFormFile postedFile, CancellationToken token)
+    {
+        if (ModelState.IsValid)
+            await _fileService.InsertFileAsync(postedFile.OpenReadStream(), token);
+        else
+            throw new Exception();
+        
+        return RedirectToAction("Index");
+    }
+
 }

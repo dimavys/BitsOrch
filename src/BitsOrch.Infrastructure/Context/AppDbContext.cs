@@ -11,4 +11,11 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<FieldEntity> Fields { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<FieldEntity>()
+            .Property(b => b.Salary)
+            .HasPrecision(14, 2);
+    }
 }
