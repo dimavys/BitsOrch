@@ -5,6 +5,7 @@
 
 <head>
     <title>BitsOrch</title>
+    <link rel="stylesheet" href="~/css/styles.css">
 </head>
 
 <body>
@@ -16,36 +17,39 @@
 @if (Model.Count() > 0)
 {
     <hr />
+    <input type="text" id="filterInput" placeholder="Search...">
     <table class="table-sortable">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Birthday</th>
-                <th>Married</th>
-                <th>Phone</th>
-                <th>Salary</th>
-                <th>Actions</th>
+                <th class="sortable" data-sort-direction="asc" data-column-index="0">Name</th>
+                <th class="sortable" data-sort-direction="asc" data-column-index="1">Birthday (YYYY-MM-DD)</th>
+                <th class="sortable" data-sort-direction="asc" data-column-index="2">Married</th>
+                <th class="sortable" data-sort-direction="asc" data-column-index="3">Phone</th>
+                <th class="sortable" data-sort-direction="asc" data-column-index="4">Salary</th>
+                <th class="sortable" data-sort-direction="asc" data-column-index="5">Actions</th>
             </tr>
         </thead>
         <tbody>
         @foreach (FieldDTO field in Model)
         {
             <tr>
-                <td>@field.Name</td>
-                <td>@field.BirthDate</td>
-                <td>@field.Married</td>
-                <td>@field.MobilePhone</td>
-                <td>@field.Salary</td>
+                <td><span class="editable" contenteditable="true">@field.Name</span></td>
+                <td><span class="editable" contenteditable="true">@field.BirthDate</span></td>
+                <td><span class="editable" contenteditable="true">@field.Married</span></td>
+                <td><span class="editable" contenteditable="true">@field.MobilePhone</span></td>
+                <td><span class="editable" contenteditable="true">@field.Salary</span></td>
                 <td>
                     <form asp-controller="Home" asp-action="DeleteRow" method="post">
                         <input type="hidden" name="id" value="@field.Id" />
                         <button type="submit">Delete</button>
                     </form>
-                    </td>
+                </td>
             </tr>
         }
         </tbody>
     </table>
 }
 <script src="js/tablesort.js"></script>
+<script src="js/tablefilter.js"></script>
+<script src="js/rowedit.js"></script>
 </body>

@@ -1,6 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3BFE6A05-3A57-443D-9B23-B660DF3960ED}"
+	ProjectSection(SolutionItems) = preProject
+		src\test.csv = src\test.csv
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitsOrch.Infrastructure", "src\BitsOrch.Infrastructure\BitsOrch.Infrastructure.csproj", "{22AA0EFE-7431-456A-846B-C841EC32F4D7}"
 EndProject

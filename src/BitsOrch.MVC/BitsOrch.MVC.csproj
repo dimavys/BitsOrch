@@ -27,8 +27,4 @@
       <_ContentIncludedByDefault Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="wwwroot\css" />
-    </ItemGroup>
-
 </Project>
